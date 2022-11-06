@@ -32,7 +32,8 @@ function App() {
           {data.results.map((character: { id: number; name: string }) => (
             <div key={character.id}>
 
-              <p>{character.name}</p>
+              <a href={`character/${character.id}`}>{character.name}</a>
+
 
             </div>
           ))}
