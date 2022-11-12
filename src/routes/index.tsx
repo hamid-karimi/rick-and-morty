@@ -1,15 +1,15 @@
 import {
   createBrowserRouter,
 } from "react-router-dom";
-import Characters from "../pages/characters";
-import EachCharacterEpisode from "../pages/characters/[id]";
-import Home from "../pages/home";
+import Characters from '@/pages/characters'
+import EachCharacterEpisode from "@/pages/characters/[id]";
+import HomePage from "@/pages/home";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />
+    element: <HomePage />
   },
   {
     path: "/characters",
