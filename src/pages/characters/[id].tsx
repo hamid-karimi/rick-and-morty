@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getSingleCharacter, getMultipleEpisodes } from '../../api'
 
-const SingleCharacter = () => {
+const EachCharacterEpisode = () => {
 
     const navigate = useNavigate()
 
@@ -59,4 +59,4 @@ const SingleCharacter = () => {
 
 }
 
-export default SingleCharacter
+export default EachCharacterEpisode
