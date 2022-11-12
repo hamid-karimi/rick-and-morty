@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useRequest } from '@/hooks/useRequest'
+import { CharactersProps } from '@/modules/characters/types'
+import CharactersContainer from '@/modules/characters'
 
 const Characters = () => {
     const [page, setPage] = useState(1)
@@ -16,25 +18,26 @@ const Characters = () => {
         useQuery(['characters', page], getCharacters)
 
     const hasMoreData = Boolean(data?.info.next)
-    console.log(data)
+
     return (
-        <div>
+        <div className='bg-gray-900 text-white'>
             {isLoading ? (
                 <div>Loading...</div>
             ) : isError ? (
                 <div>Error</div>
             ) : (
                 <div>
-                    {data.results.map((character: { id: number; name: string; image: string; status: string; species: string; origin: { name: string }; location: { name: string } }) => (
-                        <div key={character.id}>
-                            <a href={`character/${character.id}`}>{character.name}</a>
-                            <img src={character.image} /><br />
-                            <span>{character.status}</span><br />
-                            <span>{character.species}</span><br />
-                            <span>{character.origin.name}</span><br />
-                            <span>{character.location.name}</span>
-                            <hr />
-                        </div>
+                    {data.results.map((character: CharactersProps) => (
+                        <CharactersContainer
+                            key={character.id}
+                            id={character.id}
+                            name={character.name}
+                            image={character.image}
+                            status={character.status}
+                            species={character.species}
+                            origin={character.origin}
+                            location={character.location} />
+
                     ))}
                 </div>
             )}
