@@ -25,9 +25,15 @@ const Characters = () => {
                 <div>Error</div>
             ) : (
                 <div>
-                    {data.results.map((character: { id: number; name: string }) => (
+                    {data.results.map((character: { id: number; name: string; image: string; status: string; species: string; origin: { name: string }; location: { name: string } }) => (
                         <div key={character.id}>
                             <a href={`character/${character.id}`}>{character.name}</a>
+                            <img src={character.image} /><br />
+                            <span>{character.status}</span><br />
+                            <span>{character.species}</span><br />
+                            <span>{character.origin.name}</span><br />
+                            <span>{character.location.name}</span>
+                            <hr />
                         </div>
                     ))}
                 </div>
