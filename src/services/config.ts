@@ -3,7 +3,7 @@ import axios from "axios";
 
 const client = axios.create();
 client.defaults.baseURL = 'https://rickandmortyapi.com/api'
-client.defaults.timeout = 3000;
+client.defaults.timeout = 10000;
 client.defaults.withCredentials = false;
 
 client.interceptors.request.use(
