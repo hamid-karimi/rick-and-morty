@@ -1,9 +1,10 @@
 import { useRequest } from '@/hooks/useRequest'
 import Button from '@/modules/common/button'
+import Loading from '@/modules/common/loading'
 import Photo from '@/modules/common/photo'
 import TextContainer from '@/modules/common/textContainer'
 import { useQuery } from '@tanstack/react-query'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Navigate } from 'react-router-dom'
 
 
 const EachCharacterEpisode = () => {
@@ -39,12 +40,14 @@ const EachCharacterEpisode = () => {
         useQuery(['episode', episodeIds], getCharacterEpisodes, { enabled: !!data, select: (episodes) => Array.isArray(episodes) ? episodes : [episodes] })
 
 
+    if (data)
+        document.title = `${data.name} episodes`
 
     return (
         <div className='bg-gray-900 text-white min-h-screen'>
-            {characterLoading && (<span>loading...</span>)}
+            {characterLoading && <Loading />}
 
-            {(episodeIsError || characterIsError) && (<span>Erorr...</span>)}
+            {(episodeIsError || characterIsError) && <Navigate to='/error' />}
 
             <Button name='back' onClick={() => navigate(-1)}>Back</Button>
             {data?.name && <span className='flex justify-center p-5 text-2xl'> {episodeIds.length > 1 ? 'Episodes ' : 'Episode '}of {data.name} Played</span>}
