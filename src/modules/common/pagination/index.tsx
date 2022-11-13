@@ -1,7 +1,7 @@
 import React from 'react'
-import Button from '@/modules/common/button'
-import TextContainer from '@/modules/common/textContainer'
-import {paginationProps} from './types.d'
+import Button from '@/modules/common/Button'
+import TextContainer from '@/modules/common/TextContainer'
+import {paginationProps} from './types'
 
 const Pagination: React.FC<paginationProps> = ({
   page,

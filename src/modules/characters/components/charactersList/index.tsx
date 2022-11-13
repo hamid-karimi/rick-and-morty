@@ -1,14 +1,19 @@
 import {useQuery} from '@tanstack/react-query'
-import {useState} from 'react'
-import {Navigate} from 'react-router-dom'
+import {useEffect} from 'react'
+import {Navigate, useSearchParams} from 'react-router-dom'
 import {CharactersProps} from '@/modules/characters/types/types'
-import CharactersContainer from '@/modules/characters/components/characterCard'
-import Pagination from '@/modules/common/pagination'
-import Loading from '@/modules/common/loading'
+import CharactersContainer from '@/modules/characters/components/CharacterCard'
+import Pagination from '@/modules/common/Pagination'
+import Loading from '@/modules/common/Loading'
 import {getCharacters} from '@/modules/characters/services'
 
 const CharactersList: React.FC = () => {
-  const [page, setPage] = useState(1)
+  let [searchParams, setSearchParams] = useSearchParams()
+  useEffect(() => {
+    !searchParams.get('page') && setSearchParams({page: '1'})
+  }, [])
+
+  const page = Number(searchParams.get('page'))
 
   const {isLoading, isError, data, isPreviousData} = useQuery(
     ['characters', page],
@@ -18,11 +23,11 @@ const CharactersList: React.FC = () => {
   const hasMoreData = Boolean(data?.info.next)
 
   const prevHandleClick = () => {
-    setPage(old => Math.max(old - 1, 0))
+    setSearchParams({page: Math.max(page - 1, 0).toString()})
   }
   const nextHandleClick = () => {
     if (!isPreviousData && hasMoreData) {
-      setPage(old => old + 1)
+      setSearchParams({page: (page + 1).toString()})
     }
   }
 
