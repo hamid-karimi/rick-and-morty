@@ -1,4 +1,4 @@
-import {buttonProps} from './types.d'
+import {buttonProps} from './types'
 const Button: React.FC<buttonProps> = ({
   name,
   id,
