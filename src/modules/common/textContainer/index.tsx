@@ -1,4 +1,4 @@
-import {textProps} from './types.d'
+import {textProps} from './types'
 const TextContainer: React.FC<textProps> = ({title, content}) => (
   <>
     <p>

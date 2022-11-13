@@ -1,4 +1,4 @@
-import CharacterEpisodes from '@/modules/characters/components/characterEpisodes'
+import CharacterEpisodes from '@/modules/characters/components/CharacterEpisodes'
 
 const EachCharacterEpisode = () => {
   return (

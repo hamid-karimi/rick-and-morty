@@ -1,7 +1,7 @@
-import Button from '@/modules/common/button'
-import Loading from '@/modules/common/loading'
-import Photo from '@/modules/common/photo'
-import TextContainer from '@/modules/common/textContainer'
+import Button from '@/modules/common/Button'
+import Loading from '@/modules/common/Loading'
+import Photo from '@/modules/common/Photo'
+import TextContainer from '@/modules/common/TextContainer'
 import {useQuery} from '@tanstack/react-query'
 import {useParams, useNavigate, Navigate} from 'react-router-dom'
 import {

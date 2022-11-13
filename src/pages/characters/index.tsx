@@ -1,4 +1,4 @@
-import CharactersList from '@/modules/characters/components/charactersList'
+import CharactersList from '@/modules/characters/components/CharactersList'
 
 const Characters = () => {
   document.title = 'Characters List'
