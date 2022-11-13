@@ -1,10 +1,4 @@
-import React from 'react'
-
-type photoProps = {
-  imageAddress: string
-  altName: string
-}
-
+import {photoProps} from './types.d'
 const Photo: React.FC<photoProps> = ({imageAddress, altName}) => (
   <>
     <img

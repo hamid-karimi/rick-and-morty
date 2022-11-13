@@ -1,19 +1,7 @@
 import React from 'react'
-import Button from '../button'
-import TextContainer from '../textContainer'
-
-type paginationProps = {
-  page: number
-  totalPages: number
-  clickEvent: {
-    next: React.MouseEventHandler<HTMLButtonElement>
-    prev: React.MouseEventHandler<HTMLButtonElement>
-  }
-  isDisabled: {
-    next: boolean
-    prev: boolean
-  }
-}
+import Button from '@/modules/common/button'
+import TextContainer from '@/modules/common/textContainer'
+import {paginationProps} from './types.d'
 
 const Pagination: React.FC<paginationProps> = ({
   page,

@@ -1,6 +1,6 @@
-import Photo from '../../../common/photo'
-import TextContainer from '../../../common/textContainer'
-import {CharactersProps} from '../../types/types'
+import Photo from '@/modules/common/photo'
+import TextContainer from '@/modules/common/textContainer'
+import {CharactersProps} from '@/modules/characters/types/types.d'
 
 const CharactersContainer: React.FC<CharactersProps> = ({
   id,
@@ -10,15 +10,14 @@ const CharactersContainer: React.FC<CharactersProps> = ({
   species,
   origin,
   location,
-  page,
 }) => (
   <div
     key={id}
     className='flex flex-row justify-center items-center border-b-2 p-5 space-y-5'
   >
     <div className='flex w-1/3 lg:text-2xl md:text-base font-bold truncate justify-center items-center text-center'>
-      <a href={`characters/${id}`}>
-        {name}
+      <a className='flex flex-col' href={`characters/${id}`}>
+        <span className='pb-2'>{name}</span>
         <Photo imageAddress={image} altName={name} />
       </a>
     </div>
