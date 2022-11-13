@@ -4,8 +4,11 @@ import { useRequest } from '@/hooks/useRequest'
 import { CharactersProps } from '@/modules/characters/types'
 import CharactersContainer from '@/modules/characters'
 import Pagination from '@/modules/common/pagination'
+import Loading from '@/modules/common/loading'
+import { Navigate } from 'react-router-dom'
 
 const Characters = () => {
+    document.title = 'Characters List'
     const [page, setPage] = useState(1)
 
     const request = useRequest()
@@ -32,11 +35,11 @@ const Characters = () => {
     const prevDisabledCondition = Boolean(page === 1)
     const nextDisabledCondition = Boolean(isPreviousData || !hasMoreData)
     return (
-        <div className='bg-gray-900 text-white'>
+        <div className='bg-gray-900 text-white min-h-screen'>
             {isLoading ? (
-                <div>Loading...</div>
+                <Loading />
             ) : isError ? (
-                <div>Error</div>
+                <Navigate to='/error' />
             ) : (
                 <div>
                     {data.results.map((character: CharactersProps) => (
