@@ -31,7 +31,7 @@ const EachCharacterEpisode = () => {
   })
 
   const getCharacterEpisodes = async ({queryKey}: any) => {
-    const [_, page] = queryKey
+    const [_, episodeIds] = queryKey
     const {data} = await request.get(`/episode/${episodeIds}`)
     return data
   }
@@ -75,7 +75,7 @@ const EachCharacterEpisode = () => {
               key={episode.id}
             >
               <TextContainer title='Episode Name: ' content={episode.name} />
-              <TextContainer title='Episode Code: ' content={episode.epsiode} />
+              <TextContainer title='Episode Code: ' content={episode.episode} />
               <TextContainer title='Air Date: ' content={episode.air_date} />
             </div>
           )
