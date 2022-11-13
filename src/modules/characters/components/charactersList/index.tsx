@@ -7,11 +7,13 @@ import Pagination from '@/modules/common/pagination'
 import Loading from '@/modules/common/loading'
 import {getCharacters} from '@/modules/characters/services'
 
-const CharactersList = () => {
+const CharactersList: React.FC = () => {
   const [page, setPage] = useState(1)
 
-  const {isLoading, isError, error, data, isFetching, isPreviousData} =
-    useQuery(['characters', page], getCharacters)
+  const {isLoading, isError, data, isPreviousData} = useQuery(
+    ['characters', page],
+    getCharacters
+  )
 
   const hasMoreData = Boolean(data?.info.next)
 
@@ -45,7 +47,6 @@ const CharactersList = () => {
               species={character.species}
               origin={character.origin}
               location={character.location}
-              page={page}
             />
           ))}
         </div>

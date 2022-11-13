@@ -6,5 +6,4 @@ export type CharactersProps = {
   species: string
   origin: {name: string}
   location: {name: string}
-  page: number
 }

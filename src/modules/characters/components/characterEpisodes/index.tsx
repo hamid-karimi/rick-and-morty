@@ -1,4 +1,3 @@
-import {useRequest} from '@/hooks/useRequest'
 import Button from '@/modules/common/button'
 import Loading from '@/modules/common/loading'
 import Photo from '@/modules/common/photo'
@@ -10,34 +9,33 @@ import {
   getCharacterEpisodes,
 } from '@/modules/characters/services'
 
-const CharacterEpisodes = () => {
+const CharacterEpisodes: React.FC = () => {
   const navigate = useNavigate()
   const {id} = useParams()
-  const request = useRequest()
+  const episodeApiUrl = 'https://rickandmortyapi.com/api/episode/'
+  const characterUseQuery = 'character'
+  const episodeUseQuery = 'episode'
+  const errorPage = '/error'
 
   const {
     isLoading: characterLoading,
     isError: characterIsError,
-    error,
     data,
     isSuccess,
-    isFetching,
-    isPreviousData,
-  } = useQuery(['character', id], getSingleCharacter)
+  } = useQuery([characterUseQuery, id], getSingleCharacter)
 
   const episodeIds = data?.episode.map((item: string) => {
-    return item.replace('https://rickandmortyapi.com/api/episode/', '')
+    return item.replace(episodeApiUrl, '')
   })
 
-  const {
-    isError: episodeIsError,
-    error: episodeError,
-    data: episodes,
-    isLoading: episodeIsLoading,
-  } = useQuery(['episode', episodeIds], getCharacterEpisodes, {
-    enabled: !!data,
-    select: episodes => (Array.isArray(episodes) ? episodes : [episodes]),
-  })
+  const {isError: episodeIsError, data: episodes} = useQuery(
+    [episodeUseQuery, episodeIds],
+    getCharacterEpisodes,
+    {
+      enabled: !!data,
+      select: episodes => (Array.isArray(episodes) ? episodes : [episodes]),
+    }
+  )
 
   if (data) document.title = `${data.name} episodes`
 
@@ -45,7 +43,7 @@ const CharacterEpisodes = () => {
     <>
       {characterLoading && <Loading />}
 
-      {(episodeIsError || characterIsError) && <Navigate to='/error' />}
+      {(episodeIsError || characterIsError) && <Navigate to={errorPage} />}
 
       {!characterLoading && (
         <Button name='back' onClick={() => navigate(-1)}>
