@@ -2,6 +2,7 @@ import backgroundImageAddress from '@/assets/bg.png'
 import {useNavigate} from 'react-router-dom'
 const HomePage = () => {
   const navigate = useNavigate()
+  document.title = 'Rick & Morty'
   return (
     <div
       className='w-full h-screen bg-black bg-cover bg-no-repeat bg-center pt-7 flex justify-center items-center '

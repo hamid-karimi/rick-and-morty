@@ -1,33 +1,28 @@
-import {
-  createBrowserRouter,
-} from "react-router-dom";
+import {createBrowserRouter} from 'react-router-dom'
 import Characters from '@/pages/characters'
-import EachCharacterEpisode from "@/pages/characters/[id]";
-import HomePage from "@/pages/home";
-import ErrorPage from "@/pages/error";
-
+import EachCharacterEpisode from '@/pages/characters/[id]'
+import HomePage from '@/pages/home'
+import ErrorPage from '@/pages/error'
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <HomePage />,
-    errorElement: <ErrorPage />
-
+    errorElement: <ErrorPage />,
   },
 
   {
-    path: "/characters",
+    path: '/characters',
     element: <Characters />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: `/characters/:id`,
     element: <EachCharacterEpisode />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
   {
     path: `/error`,
-    element: <ErrorPage />
+    element: <ErrorPage />,
   },
-
-]);
+])
