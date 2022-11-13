@@ -49,7 +49,7 @@ const EachCharacterEpisode = () => {
 
             {(episodeIsError || characterIsError) && <Navigate to='/error' />}
 
-            <Button name='back' onClick={() => navigate(-1)}>Back</Button>
+            {!characterLoading && <Button name='back' onClick={() => navigate(-1)}>Back</Button>}
             {data?.name && <span className='flex justify-center p-5 text-2xl'> {episodeIds.length > 1 ? 'Episodes ' : 'Episode '}of {data.name} Played</span>}
             {data && <Photo imageAddress={data.image} altName={data.name} />}
             {isSuccess &&

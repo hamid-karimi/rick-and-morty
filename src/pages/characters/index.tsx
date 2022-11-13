@@ -56,12 +56,13 @@ const Characters = () => {
                     ))}
                 </div>
             )}
-
-            <Pagination
-                page={page}
-                clickEvent={{ next: nextHandleClick, prev: prevHandleClick }}
-                isDisabled={{ next: nextDisabledCondition, prev: prevDisabledCondition }}
-            />
+            {!isLoading &&
+                <Pagination
+                    page={page}
+                    clickEvent={{ next: nextHandleClick, prev: prevHandleClick }}
+                    isDisabled={{ next: nextDisabledCondition, prev: prevDisabledCondition }}
+                />
+            }
         </div>
     )
 }
