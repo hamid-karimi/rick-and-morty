@@ -1,4 +1,7 @@
 import { useRequest } from '@/hooks/useRequest'
+import Button from '@/modules/common/button'
+import Photo from '@/modules/common/photo'
+import TextContainer from '@/modules/common/textContainer'
 import { useQuery } from '@tanstack/react-query'
 import { useParams, useNavigate } from 'react-router-dom'
 
@@ -38,12 +41,14 @@ const EachCharacterEpisode = () => {
 
 
     return (
-        <div className='bg-gray-900 text-white h-auto'>
+        <div className='bg-gray-900 text-white min-h-screen'>
             {characterLoading && (<span>loading...</span>)}
 
             {(episodeIsError || characterIsError) && (<span>Erorr...</span>)}
-            <button onClick={() => navigate(-1)}>BACK</button>
-            {data?.name && <h1> {episodeIds.length > 1 ? 'Episodes ' : 'Episode '}of {data.name} Played</h1>}
+
+            <Button name='back' onClick={() => navigate(-1)}>Back</Button>
+            {data?.name && <span className='flex justify-center p-5 text-2xl'> {episodeIds.length > 1 ? 'Episodes ' : 'Episode '}of {data.name} Played</span>}
+            {data && <Photo imageAddress={data.image} altName={data.name} />}
             {isSuccess &&
 
                 (
@@ -51,10 +56,10 @@ const EachCharacterEpisode = () => {
                     episodes?.map((episode: any) => {
                         return (
 
-                            <div className='flex flex-col p-5 border-b-2 leading-9 text-gray-50' key={episode.id}>
-                                <p><span className='font-semibold text-gray-400'>Episode Name: </span>{episode.name}</p>
-                                <p><span className='font-semibold text-gray-400'>Episode Code: </span>{episode.episode}</p>
-                                <p><span className='font-semibold text-gray-400'>Air Date: </span>{episode.air_date}</p>
+                            <div className='flex flex-col items-center p-5 border-b-2 leading-9 text-gray-50' key={episode.id}>
+                                <TextContainer title='Episode Name: ' content={episode.name} />
+                                <TextContainer title='Episode Code: ' content={episode.epsiode} />
+                                <TextContainer title='Air Date: ' content={episode.air_date} />
                             </div>
                         )
                     }))

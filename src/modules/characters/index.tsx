@@ -1,4 +1,5 @@
 import Photo from '../common/photo'
+import TextContainer from '../common/textContainer'
 import { CharactersProps } from './types'
 
 const CharactersContainer: React.FC<CharactersProps> = ({ id,
@@ -18,12 +19,10 @@ const CharactersContainer: React.FC<CharactersProps> = ({ id,
             </a>
         </div>
         <div className='flex flex-col w-2/3 p-5 leading-10 truncate text-gray-50'>
-
-            <p><span className='font-semibold  text-gray-400'>Status: </span>{status}</p>
-            <p><span className='font-semibold  text-gray-400'>Species:</span> {species}</p>
-            <p><span className='font-semibold  text-gray-400'>Origin Name:</span> {origin.name}</p>
-            <p><span className='font-semibold  text-gray-400'>Location Name:</span> {location.name}</p>
-
+            <TextContainer title='Status: ' content={status} />
+            <TextContainer title='Species: ' content={species} />
+            <TextContainer title='Origin Name: ' content={origin.name} />
+            <TextContainer title='Location Name: ' content={location.name} />
         </div>
     </div>
 

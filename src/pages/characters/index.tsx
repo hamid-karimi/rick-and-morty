@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useRequest } from '@/hooks/useRequest'
 import { CharactersProps } from '@/modules/characters/types'
 import CharactersContainer from '@/modules/characters'
+import Pagination from '@/modules/common/pagination'
 
 const Characters = () => {
     const [page, setPage] = useState(1)
@@ -19,6 +20,17 @@ const Characters = () => {
 
     const hasMoreData = Boolean(data?.info.next)
 
+    const prevHandleClick = () => {
+        setPage(old => Math.max(old - 1, 0))
+    }
+    const nextHandleClick = () => {
+        if (!isPreviousData && hasMoreData) {
+            setPage(old => old + 1)
+        }
+    }
+
+    const prevDisabledCondition = Boolean(page === 1)
+    const nextDisabledCondition = Boolean(isPreviousData || !hasMoreData)
     return (
         <div className='bg-gray-900 text-white'>
             {isLoading ? (
@@ -36,30 +48,17 @@ const Characters = () => {
                             status={character.status}
                             species={character.species}
                             origin={character.origin}
-                            location={character.location} />
-
+                            location={character.location}
+                        />
                     ))}
                 </div>
             )}
-            <span>Current Page: {page}</span>
-            <button
-                onClick={() => setPage(old => Math.max(old - 1, 0))}
-                disabled={page === 1}
-            >
-                Previous Page
-            </button>{' '}
-            <button
-                onClick={() => {
-                    if (!isPreviousData && hasMoreData) {
-                        setPage(old => old + 1)
-                    }
-                }}
-                // Disable the Next Page button until we know a next page is available
-                disabled={isPreviousData || !hasMoreData}
-            >
-                Next Page
-            </button>
-            {isFetching ? <span> Loading...</span> : null}{' '}
+
+            <Pagination
+                page={page}
+                clickEvent={{ next: nextHandleClick, prev: prevHandleClick }}
+                isDisabled={{ next: nextDisabledCondition, prev: prevDisabledCondition }}
+            />
         </div>
     )
 }
