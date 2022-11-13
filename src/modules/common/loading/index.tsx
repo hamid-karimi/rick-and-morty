@@ -1,5 +1,5 @@
 const Loading = () => (
-    <div role='status'>
+    <div role='status' className="flex w-full h-screen items-center justify-center">
         <svg
             className='inline mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-green-500'
             viewBox='0 0 100 101'
