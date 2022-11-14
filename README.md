@@ -30,8 +30,8 @@ separate page/view/dialog/modal, showing the following information
 - Functional Programming
 - Axios
 - React Router v6
+- React Query
 - Vite
-
 - Eslint as the linter
 - Prettier as the code formatter
 
