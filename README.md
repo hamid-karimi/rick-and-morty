@@ -43,7 +43,7 @@ First to run
 ```
 npm i
 ```
-
+After all dependencies installed, run
 ```
 npm run start
 ```
