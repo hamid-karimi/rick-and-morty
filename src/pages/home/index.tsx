@@ -1,4 +1,4 @@
-import backgroundImageAddress from '@/assets/bg.png'
+import backgroundImageAddress from '@/assets/images/bg.png'
 import {useNavigate} from 'react-router-dom'
 const HomePage = () => {
   const navigate = useNavigate()

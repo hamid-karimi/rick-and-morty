@@ -1,4 +1,4 @@
-import backgroundImageAddress from '@/assets/lost.png'
+import backgroundImageAddress from '@/assets/images/lost.png'
 import {useNavigate} from 'react-router-dom'
 
 const ErrorPage = () => {
