@@ -31,7 +31,7 @@ separate page/view/dialog/modal, showing the following information
 - Axios
 - React Router v6
 - React Query
-- [Vite] (https://vitejs.dev/) - Build Tool
+- [Vite](https://vitejs.dev/) - Build Tool
 - Eslint as the linter
 - Prettier as the code formatter
 
